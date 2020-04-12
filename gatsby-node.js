@@ -2,10 +2,13 @@ const path = require('path');
 const sharp = require('sharp');
 const fs = require('fs');
 
+const { zipFunctions } = require('@netlify/zip-it-and-ship-it');
+
+
 sharp.cache(false);
 sharp.simd(false);
 
-const glob = require('glob');
+// const glob = require('glob');
 
 // exports.onPostBuild = () => {
 //   // Configure where the functions are kept and where we want to move them.
@@ -177,6 +180,14 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
+// exports.onPostBuild = () => {
+//   const srcLocation = path.join(__dirname, `src/lambda-build`);
+//   const outputLocation = path.join(__dirname, `public/functions`);
+//   if (!fs.existsSync(outputLocation)) {
+//     fs.mkdirSync(outputLocation);
+//   }
+//   return zipFunctions(srcLocation, outputLocation);
+// };
 /* Allows named imports */
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
