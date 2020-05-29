@@ -18,14 +18,12 @@ export default async function members(event) {
   //  END MAGIC AUTH
   // START LIGHTRAIL
   // Create Contact
-  const contactId = ''
   try {
-    const contacts = await Lightrail.contacts.listContacts({
+    const contact = await Lightrail.contacts.listContacts({
       email: {
         eq: metadata.email,
       },
     });
-    const contact = contacts.body[0]
     console.log('try contact', contact)
   } catch {
     const newContact = {
@@ -35,12 +33,10 @@ export default async function members(event) {
     const contact = await Lightrail.contacts.createContact(newContact);
     console.log('catch contact', contact)
   } finally {
-    const contactId = contact.body.id || 'exampleID123'
+    contactId = contact.id || 'exampleID123'
     console.log('finally contactId ', contactId)
   }
-
   const contactValuesList = await Lightrail.contacts.listContactsValues(contact)
-
   return {
     statusCode: 200,
     body: JSON.stringify({ contactId: contactId, email: metadata.email }),
