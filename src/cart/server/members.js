@@ -17,7 +17,8 @@ export default async function members(event) {
   console.log('members.js', metadata);
   //  END MAGIC AUTH
   // START LIGHTRAIL
-  // Create Contact
+  // Create 
+  const contact = {}
   async function getContactId(){
     try {
       const contacts = await Lightrail.contacts.listContacts({
