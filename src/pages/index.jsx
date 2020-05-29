@@ -10,7 +10,6 @@ import Img from 'gatsby-image';
 
 import Skeleton from 'react-loading-skeleton';
 
-
 const PostWrapper = styled.main`
   display: flex;
   flex-direction: row;
@@ -62,7 +61,7 @@ const Wrapper = styled.section`
     width: 100%;
     height: 15rem;
   }
-`; 
+`;
 
 const Wrapper2 = styled.section`
   margin-bottom: 2rem;
@@ -148,7 +147,7 @@ const Info = styled.div`
   -webkit-text-fill-color: ${props => props.theme.colors.white.exp};
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  text-shadow: 0 0 50px hsla(0, 0%, 0%, .9);
+  text-shadow: 0 0 50px hsla(0, 0%, 0%, 0.9);
   margin: 0 1rem 1.25rem 1.25rem;
   position: absolute;
   bottom: 0;
@@ -161,21 +160,47 @@ const Title = styled.h2`
 
 const Price = styled.p``;
 
-
 const Index = ({ data }) => {
   //const { edges } = data.allMarkdownRemark;
 
-  // useEffect(() => { 
+  // useEffect(() => {
 
-  //   if ( typeof window.yotpo !== "undefined" &&  yotpo.initialized && post) { 
+  //   if ( typeof window.yotpo !== "undefined" &&  yotpo.initialized && post) {
   //     window.yotpo.initWidgets();
 
   //     setTimeout(function() {
   //       window.yotpo.refreshWidgets()
-  //     }, 1000) 
-  //   } 
+  //     }, 1000)
+  //   }
   // }, [post]);
 
+  const links = [
+    {
+      link: '/catalog/fairy-garden/mixed-hypoestes/',
+      img: data.imageNine.childImageSharp.fluid,
+      title: 'Mixed Colors Hypoestes',
+    },
+    {
+      link: '/catalog/carnivorous-plants/alata/',
+      img: data.imageTen.childImageSharp.fluid,
+      title: 'Nepenthes',
+    },
+    {
+      link: '/catalog/fairy-garden/mini-white/',
+      img: data.imageSeven.childImageSharp.fluid,
+      title: 'Mini White,',
+    },
+    {
+      link: '/catalog/fairy-garden/mini-pixie/',
+      img: data.imageFive.childImageSharp.fluid,
+      title: 'Mini Pixie',
+    },
+    {
+      link: '/catalog/fairy-garden/rose-hypoestes/',
+      img: data.imageEight.childImageSharp.fluid,
+      title: 'Rose Hypestes',
+    },
+  ];
   return (
     <Layout>
       <Helmet title={'Sweet Leaf Succulents'} />
@@ -183,19 +208,25 @@ const Index = ({ data }) => {
       <Header title="Sweet Leaf Succulents">
         {/* <Img fluid={data.logo.childImageSharp.fluid} /> */}
       </Header>
+
       <PostWrapper>
-          <h2> Featured Plants </h2>
+        <h2> Featured Plants </h2>
       </PostWrapper>
       <PostWrapper>
-          <p>
-            Announcement: We will be adding many new plants to our inventory over the coming weeks. You can follow us on social media to get the latest updates!
-          </p>
+        <p>
+          Announcement: We will be adding many new plants to our inventory over
+          the coming weeks. You can follow us on social media to get the latest
+          updates!
+        </p>
       </PostWrapper>
 
       <PostWrapper>
-      <Wrapper2>
+        <Wrapper2>
           <Image>
-            <Img fluid={data.imageTwelve.childImageSharp.fluid || <Skeleton />} alt="Succulents"/>
+            <Img
+              fluid={data.imageTwelve.childImageSharp.fluid || <Skeleton />}
+              alt="Succulents"
+            />
           </Image>
           <StyledLink to="/catalog/succulents/">
             <Info>
@@ -206,7 +237,10 @@ const Index = ({ data }) => {
         </Wrapper2>
         <Wrapper>
           <Image>
-            <Img fluid={data.imageThirteen.childImageSharp.fluid || <Skeleton />} alt="Cacti"/>
+            <Img
+              fluid={data.imageThirteen.childImageSharp.fluid || <Skeleton />}
+              alt="Cacti"
+            />
           </Image>
           <StyledLink to="/catalog/cacti/">
             <Info>
@@ -215,9 +249,12 @@ const Index = ({ data }) => {
             </Info>
           </StyledLink>
         </Wrapper>
-      <Wrapper>
+        <Wrapper>
           <Image>
-            <Img fluid={data.imageEleven.childImageSharp.fluid || <Skeleton />} alt="Nepenthes Kokedama"/>
+            <Img
+              fluid={data.imageEleven.childImageSharp.fluid || <Skeleton />}
+              alt="Nepenthes Kokedama"
+            />
           </Image>
           <StyledLink to="/catalog/carnivorous-plants/kokedama">
             <Info>
@@ -226,74 +263,33 @@ const Index = ({ data }) => {
             </Info>
           </StyledLink>
         </Wrapper>
-        <Wrapper>
-          <Image>
-            <Img fluid={data.imageEight.childImageSharp.fluid || <Skeleton />} alt="Rose Hypoestes"/>
-          </Image>
-          <StyledLink to="/catalog/fairy-garden/rose-hypoestes/">
-            <Info>
-              <Title>Rose Hypoestes</Title>
-              {/* <Price>$6.45</Price> */}
-            </Info>
-          </StyledLink>
-        </Wrapper>
-        <Wrapper>
-          <Image>
-            <Img fluid={data.imageFive.childImageSharp.fluid || <Skeleton />} alt="Mini Pixie"/>
-          </Image>
-          <StyledLink to="/catalog/fairy-garden/mini-pixie/">
-            <Info>
-              <Title>Mini Pixie</Title>
-              {/* <Price>$6.95</Price> */}
-            </Info>
-          </StyledLink>
-        </Wrapper>
-        
 
-        <Wrapper>
-          <Image>
-            <Img fluid={data.imageSeven.childImageSharp.fluid || <Skeleton />} alt="Mini White"/>
-          </Image>
-          <StyledLink to="/catalog/fairy-garden/mini-white/">
-            <Info>
-              <Title>Mini White</Title>
-              {/* <Price>$6.95</Price> */}
-            </Info>
-          </StyledLink>
-        </Wrapper>
-        <Wrapper>
-          <Image>
-            <Img fluid={data.imageTen.childImageSharp.fluid || <Skeleton />} alt="Nepenthes Alata"/>
-          </Image>
-          <StyledLink to="/catalog/carnivorous-plants/alata/">
-            <Info>
-              <Title>Nepenthes</Title>
-              {/* <Price>$13.49</Price> */}
-            </Info>
-          </StyledLink>
-        </Wrapper>
-        
-        <Wrapper>
-          <Image>
-            <Img fluid={data.imageNine.childImageSharp.fluid || <Skeleton />} alt="Mixed Colors Hypoestes"/>
-          </Image>
-          <StyledLink to="/catalog/fairy-garden/mixed-hypoestes/">
-            <Info>
-              <Title>Mixed Colors Hypoestes</Title>
-              {/* <Price>$6.45</Price> */}
-            </Info>
-          </StyledLink>
-        </Wrapper>
+        {links.map(linky => (
+          <Wrapper>
+            <Image>
+              <Img fluid={linky.img || <Skeleton />} alt={linky.title} />
+            </Image>
+            <StyledLink to={linky.link}>
+              <Info>
+                <Title>{linky.title}</Title>
+                {/* <Price>$9.95</Price> */}
+              </Info>
+            </StyledLink>
+          </Wrapper>
+        ))}
+
         
       </PostWrapper>
       <PostWrapper>
-        <h4> <Link to="/catalog/">See our full catalog for more!</Link></h4>
+        <h4>
+          {' '}
+          <Link to="/catalog/">See our full catalog for more!</Link>
+        </h4>
       </PostWrapper>
       {/* WHEEL IS BELOW THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/}
       {/* <PostWrapper>
         <Wheel />
       </PostWrapper> */}
-          
     </Layout>
   );
 };
