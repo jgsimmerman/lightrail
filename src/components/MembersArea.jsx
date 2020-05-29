@@ -9,7 +9,7 @@ export default function MembersArea() {
   useEffect(() => {
     if (auth.loggedIn) {
       auth
-        .fetch('https://sweetleaf-gc.netlify.app/.netlify/functions/members')
+        .fetch('https://lightrail-gc.netlify.app/.netlify/functions/members')
         .then(res => res.json())
         .then(payload => {
           setMembers(payload);
